@@ -147,12 +147,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
         submitButton.disabled = true;
         shareButton.disabled = false; // Enable share button after submission
+
+        // Track submit button click event
+        gtag('event', 'click', {
+            'event_category': 'Quiz',
+            'event_label': 'Submit Button Clicked'
+        });
     });
 
     shareButton.addEventListener('click', function() {
         const scoreMessage = `Check out my score on today's listl: ${totalScore}/100`;
         const individualScores = userAnswers.map((answer, index) => `${index + 1}. ${scores[index].points}/${points[correctOrder[index].city][index]}`).join('\n');
         const shareText = `${scoreMessage}\n\n${individualScores}`;
+
+        // Track share button click event
+        gtag('event', 'share', {
+            'event_category': 'Quiz',
+            'event_label': 'Quiz Results Shared'
+        });
 
         if (navigator.share) {
             navigator.share({
@@ -171,10 +183,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     scoringButton.addEventListener('click', function() {
         scoringModal.style.display = 'block';
+
+        // Track scoring modal open event
+        gtag('event', 'modal_open', {
+            'event_category': 'Scoring',
+            'event_label': 'Scoring Modal Opened'
+        });
     });
 
     closeScoringModal.addEventListener('click', function() {
         scoringModal.style.display = 'none';
+
+        // Track scoring modal close event
+        gtag('event', 'modal_close', {
+            'event_category': 'Scoring',
+            'event_label': 'Scoring Modal Closed'
+        });
     });
 
     function calculateScore(userAnswers) {
@@ -187,6 +211,14 @@ document.addEventListener('DOMContentLoaded', function() {
             score += pointsEarned;
             scores.push({ answer, points: pointsEarned, correctCity });
         });
+
+        // Track score calculation event
+        gtag('event', 'score_calculation', {
+            'event_category': 'Quiz',
+            'event_label': 'Score Calculated',
+            'value': score
+        });
+
         return { score, scores };
     }
 
@@ -203,6 +235,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 li.classList.add('incorrect');
             }
             answersList.appendChild(li);
+        });
+
+        // Track correct answers displayed event
+        gtag('event', 'correct_answers_display', {
+            'event_category': 'Quiz',
+            'event_label': 'Correct Answers Displayed'
         });
     }
 
