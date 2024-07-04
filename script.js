@@ -153,6 +153,16 @@ document.addEventListener('DOMContentLoaded', function() {
             'event_category': 'Quiz',
             'event_label': 'Submit Button Clicked'
         });
+
+        // Save user answers to database
+        saveUserAnswers(userAnswers, scores, totalScore);
+
+        // Track score calculated event
+        gtag('event', 'score_calculated', {
+            'event_category': 'Quiz',
+            'event_label': 'Score Calculated',
+            'value': totalScore
+        });
     });
 
     shareButton.addEventListener('click', function() {
@@ -250,6 +260,32 @@ document.addEventListener('DOMContentLoaded', function() {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
+    }
+
+    function saveUserAnswers(userAnswers, scores, totalScore) {
+        // Replace with your server endpoint to handle saving to database
+        const url = 'https://example.com/save_answers';
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userAnswers,
+                scores,
+                totalScore
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('User answers saved successfully');
+        })
+        .catch(error => {
+            console.error('Error saving user answers:', error);
+        });
     }
 
     displayAnswers();
