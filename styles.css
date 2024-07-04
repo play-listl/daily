@@ -1,0 +1,175 @@
+/* Reset default styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Ensure no horizontal scroll */
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative; /* Ensure relative positioning for absolute elements */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#scoring-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    font-size: 1.5rem;
+    background-color: #ffc107; /* Yellow button */
+    color: #333;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#scoring-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+    background-color: #ffca28; /* Lighter yellow on hover */
+}
+
+/* Main content styles */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure full viewport height */
+    background-color: #f0f0f0; /* Light gray background */
+}
+
+#quiz {
+    background-color: #fff; /* White background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 50px; /* Added margin for better spacing */
+}
+
+#instructions {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+#answers {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#answers li {
+    background-color: #007bff; /* Blue background for list items */
+    color: #fff; /* White text color */
+    font-size: 1.5rem;
+    padding: 20px 30px;
+    margin: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#answers li:hover {
+    transform: translateY(-5px);
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#answers li.dragging {
+    opacity: 0.7;
+    background-color: #6c757d; /* Grayish color for dragging */
+}
+
+#answers li.correct {
+    background-color: #28a745; /* Green background for correct answers */
+}
+
+#answers li.incorrect {
+    background-color: #dc3545; /* Red background for incorrect answers */
+}
+
+/* Button styles */
+button {
+    background-color: #28a745; /* Green button */
+    color: #fff; /* White text color */
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px; /* Added margin for better spacing */
+}
+
+button:disabled {
+    background-color: #6c757d; /* Gray button when disabled */
+    cursor: not-allowed;
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Score display styles */
+#score {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 40px;
+    color: #007bff; /* Blue color for score */
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Semi-transparent background */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 700px;
+    text-align: left;
+}
+
+.close {
+    color: #aaa;
+    font-size: 2.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+    text-decoration: none;
+}
