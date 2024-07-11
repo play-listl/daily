@@ -16,18 +16,22 @@
     </script>
 </head>
 <body>
-    <header>
-        <h1>listl</h1>
-        <button id="scoring-btn">How Scoring Works</button>
+    <header class="header">
+        <div class="logo">
+            <h1>listl</h1>
+        </div>
+        <div class="buttons">
+            <button id="scoring-btn" class="scoring-btn">How Scoring Works</button>
+        </div>
     </header>
     <main>
         <div id="quiz">
-            <p id="instructions">
+            <p id="instructions" class="instructions">
                 Arrange the following planets from shortest average distance to the sun (at the top of the list) to the longest average distance (at the bottom of the list).</p>
             <ul id="answers"></ul>
-            <button id="submit-btn">Submit</button>
-            <button id="share-btn" class="disabled">Share Results</button>
-            <p id="score"></p>
+            <button id="submit-btn" class="submit-btn">Submit</button>
+            <button id="share-btn" class="share-btn disabled">Share Results</button>
+            <p id="score" class="score"></p>
         </div>
         <div id="scoring-modal" class="modal">
             <div class="modal-content">

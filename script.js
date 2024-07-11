@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const correctOrder = [
-        { city: 'Mercury', year: '157.9 million km' },
+        { city: 'Mercury', year: '57.9 million km' },
         { city: 'Venus', year: '108.2 million km' },
         { city: 'Earth', year: '149.6 million km' },
         { city: 'Mars', year: '227.9 million km' },
         { city: 'Jupiter', year: '778.5 million km' },
         { city: 'Saturn', year: '1,429 million km' },
-        { city: 'Uranus', year: '2,871 million km ' },
+        { city: 'Uranus', year: '2,871 million km' },
         { city: 'Neptune', year: '4,498 million km' }
     ];
 
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let totalScore = 0;
     let userAnswers = [];
     let scores = [];
+    let submitted = false;
 
     function displayAnswers() {
         const shuffledOrder = shuffle([...correctOrder]);
@@ -131,60 +132,61 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     submitButton.addEventListener('click', function() {
-        userAnswers = Array.from(answersList.querySelectorAll('li')).map(li => li.textContent.trim());
-        const result = calculateScore(userAnswers);
-        gamesPlayed++;
-        totalScore += result.score;
-        highScore = Math.max(highScore, result.score);
-        scores = result.scores;
-        scoreText.textContent = `Total Score ${totalScore}/100`;
+        if (!submitted) {
+            userAnswers = Array.from(answersList.querySelectorAll('li')).map(li => li.textContent.trim());
+            const result = calculateScore(userAnswers);
+            gamesPlayed++;
+            totalScore += result.score;
+            highScore = Math.max(highScore, result.score);
+            scores = result.scores;
+            scoreText.textContent = `Total Score: ${totalScore}/100`;
 
-        // Show correct answers and user scores
-        showCorrectAnswers(userAnswers, scores);
+            // Show correct answers and user scores
+            showCorrectAnswers(userAnswers, scores);
 
-        submitButton.disabled = true;
-        shareButton.disabled = false; // Enable share button after submission
+            submitButton.disabled = true;
+            submitButton.style.backgroundColor = '#6c757d'; // Gray out submit button
+            shareButton.disabled = false; // Enable share button after submission
+            shareButton.style.backgroundColor = '#28a745'; // Green share button
 
-        // Track submit button click event
-        gtag('event', 'click', {
-            'event_category': 'Quiz',
-            'event_label': 'Submit Button Clicked'
-        });
+            // Track submit button click event
+            gtag('event', 'click', {
+                'event_category': 'Quiz',
+                'event_label': 'Submit Button Clicked'
+            });
 
-        // Save user answers to database
-        saveUserAnswers(userAnswers, scores, totalScore);
+            // Save user answers to database
+            saveUserAnswers(userAnswers, scores, totalScore);
 
-        // Track score calculated event
-        gtag('event', 'score_calculated', {
-            'event_category': 'Quiz',
-            'event_label': 'Score Calculated',
-            'value': totalScore
-        });
+            submitted = true;
+        }
     });
 
     shareButton.addEventListener('click', function() {
-        const scoreMessage = `Check out my score on today's listl: ${totalScore}/100`;
-        const individualScores = userAnswers.map((answer, index) => `${index + 1}. ${scores[index].points}/${points[correctOrder[index].city][index]}`).join('\n');
-        const shareText = `${scoreMessage}\n\n${individualScores}`;
+        if (submitted) {
+            const scoreMessage = `Check out my score on today's listl: ${totalScore}/100`;
+            const individualScores = userAnswers.map((answer, index) => `${index + 1}. ${scores[index].points}/${points[correctOrder[index].city][index]}`).join('\n');
+            const shareText = `${scoreMessage}\n\n${individualScores}`;
 
-        // Track share button click event
-        gtag('event', 'share', {
-            'event_category': 'Quiz',
-            'event_label': 'Quiz Results Shared'
-        });
-
-        if (navigator.share) {
-            navigator.share({
-                title: 'Listl Score',
-                text: shareText
-            }).then(() => {
-                alert('Score shared successfully!');
-            }).catch((error) => {
-                console.error('Error sharing score:', error);
-                alert('Failed to share score.');
+            // Track share button click event
+            gtag('event', 'share', {
+                'event_category': 'Quiz',
+                'event_label': 'Quiz Results Shared'
             });
-        } else {
-            alert('Share functionality is not supported on your device.');
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Listl Score',
+                    text: shareText
+                }).then(() => {
+                    alert('Score shared successfully!');
+                }).catch((error) => {
+                    console.error('Error sharing score:', error);
+                    alert('Failed to share score.');
+                });
+            } else {
+                alert('Share functionality is not supported on your device.');
+            }
         }
     });
 
@@ -251,6 +253,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function saveUserAnswers(userAnswers, scores, totalScore) {
+        // Here you can implement saving user answers to your database or storage
+        console.log('User answers:', userAnswers);
+        console.log('Scores:', scores);
+        console.log('Total Score:', totalScore);
+
+        // Track user answers saved event
+        gtag('event', 'answers_saved', {
+            'event_category': 'Quiz',
+            'event_label': 'User Answers Saved'
+        });
+    }
+
+    // Function to shuffle array elements
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
