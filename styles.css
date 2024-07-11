@@ -14,24 +14,24 @@ header {
     text-align: center;
     padding: 20px 0;
     position: relative; /* Ensure relative positioning for absolute elements */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 3rem;
+    font-size: 2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
 #scoring-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 20px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     background-color: #ffc107; /* Yellow button */
     color: #333;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 6px;
     border: none;
     cursor: pointer;
@@ -39,7 +39,6 @@ header h1 {
 }
 
 #scoring-btn:hover {
-    transform: translateY(-50%) scale(1.1);
     background-color: #ffca28; /* Lighter yellow on hover */
 }
 
@@ -64,7 +63,7 @@ main {
 }
 
 #instructions {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 30px;
 }
 
@@ -77,8 +76,8 @@ main {
 #answers li {
     background-color: #007bff; /* Blue background for list items */
     color: #fff; /* White text color */
-    font-size: 1.5rem;
-    padding: 20px 30px;
+    font-size: 1.2rem;
+    padding: 15px 20px;
     margin: 15px;
     border-radius: 10px;
     cursor: pointer;
@@ -108,8 +107,8 @@ main {
 button {
     background-color: #28a745; /* Green button */
     color: #fff; /* White text color */
-    font-size: 1.5rem;
-    padding: 15px 30px;
+    font-size: 1.2rem;
+    padding: 10px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -117,20 +116,21 @@ button {
     margin: 10px; /* Added margin for better spacing */
 }
 
-button:disabled {
+button:disabled,
+button.disabled {
     background-color: #6c757d; /* Gray button when disabled */
     cursor: not-allowed;
 }
 
-button:hover {
+button:hover:not(:disabled) {
     background-color: #218838; /* Darker green on hover */
 }
 
 /* Score display styles */
 #score {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-top: 40px;
+    margin-top: 20px;
     color: #007bff; /* Blue color for score */
 }
 
@@ -160,7 +160,7 @@ button:hover {
 
 .close {
     color: #aaa;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: bold;
     position: absolute;
     top: 20px;
@@ -174,43 +174,32 @@ button:hover {
     text-decoration: none;
 }
 
-/* Responsive styles for mobile devices */
+/* Media Queries */
 @media (max-width: 768px) {
-    header {
-        padding: 10px 0;
-    }
-
     header h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     #scoring-btn {
-        font-size: 1rem;
+        font-size: 0.8rem;
         padding: 8px 16px;
-        right: 10px;
     }
 
     #instructions {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     #answers li {
-        font-size: 1.2rem;
-        padding: 15px 20px;
+        font-size: 1rem;
+        padding: 12px 16px;
     }
 
     button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    #score {
         font-size: 1.2rem;
-        padding: 10px 20px;
-    }
-
-    .modal-content {
-        padding: 20px;
-    }
-
-    .close {
-        font-size: 2rem;
-        top: 10px;
-        right: 20px;
     }
 }

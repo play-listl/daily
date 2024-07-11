@@ -2,14 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const answersList = document.getElementById('answers');
     const submitButton = document.getElementById('submit-btn');
     const shareButton = document.getElementById('share-btn');
-    const scoreText = document.getElementById('score');
-    const instructions = document.getElementById('instructions');
     const scoringButton = document.getElementById('scoring-btn');
     const scoringModal = document.getElementById('scoring-modal');
     const closeScoringModal = document.getElementById('close-scoring-modal');
-
-    // Disable share button initially
-    shareButton.disabled = true;
+    const scoreText = document.getElementById('score');
+    const instructions = document.getElementById('instructions');
 
     const points = {
         'Mercury': [20, 12, 8, 6, 4, 3, 2, 0],
@@ -262,31 +259,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return array;
     }
 
-    function saveUserAnswers(userAnswers, scores, totalScore) {
-        // Replace with your server endpoint to handle saving to database
-        const url = 'https://example.com/save_answers';
-
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userAnswers,
-                scores,
-                totalScore
-            })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            console.log('User answers saved successfully');
-        })
-        .catch(error => {
-            console.error('Error saving user answers:', error);
-        });
-    }
-
     displayAnswers();
+
+    // Track quiz page loaded event
+    gtag('event', 'page_loaded', {
+        'event_category': 'Quiz',
+        'event_label': 'Quiz Page Loaded'
+    });
 });
