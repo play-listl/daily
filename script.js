@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const points = {
         'The Adam Project': [20, 12, 8, 6, 4, 3, 2, 0],
         'Free Guy': [16, 16, 11, 7, 5, 4, 2, 1],
-        'Deadpool 2: [12, 12, 14, 9, 7, 5, 3, 2],
+        'Deadpool 2': [12, 12, 14, 9, 7, 5, 3, 2],
         'The Hitmans Bodyguard': [10, 10, 11, 12, 8, 6, 4, 4],
         'Ted': [8, 8, 8, 9, 11, 8, 5, 5],
         'Buried': [6, 6, 7, 7, 8, 10, 7, 5],
