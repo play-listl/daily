@@ -9,25 +9,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const instructions = document.getElementById('instructions');
 
     const points = {
-        'Mercury': [20, 12, 8, 6, 4, 3, 2, 0],
-        'Venus': [16, 16, 11, 7, 5, 4, 2, 1],
-        'Earth': [12, 12, 14, 9, 7, 5, 3, 2],
-        'Mars': [10, 10, 11, 12, 8, 6, 4, 4],
-        'Jupiter': [8, 8, 8, 9, 11, 8, 5, 5],
-        'Saturn': [6, 6, 7, 7, 8, 10, 7, 5],
-        'Uranus': [5, 5, 5, 6, 7, 9, 9, 7],
-        'Neptune': [4, 4, 4, 4, 5, 6, 7, 8]
+        'The Adam Project': [20, 12, 8, 6, 4, 3, 2, 0],
+        'Free Guy': [16, 16, 11, 7, 5, 4, 2, 1],
+        'Deadpool 2: [12, 12, 14, 9, 7, 5, 3, 2],
+        'The Hitmans Bodyguard': [10, 10, 11, 12, 8, 6, 4, 4],
+        'Ted': [8, 8, 8, 9, 11, 8, 5, 5],
+        'Buried': [6, 6, 7, 7, 8, 10, 7, 5],
+        'Harold & Kuma Go to the White Castle': [5, 5, 5, 6, 7, 9, 9, 7],
+        'National Lampoons Van Wilder': [4, 4, 4, 4, 5, 6, 7, 8]
     };
 
     const correctOrder = [
-        { city: 'Mercury', year: '57.9 million km' },
-        { city: 'Venus', year: '108.2 million km' },
-        { city: 'Earth', year: '149.6 million km' },
-        { city: 'Mars', year: '227.9 million km' },
-        { city: 'Jupiter', year: '778.5 million km' },
-        { city: 'Saturn', year: '1,429 million km' },
-        { city: 'Uranus', year: '2,871 million km' },
-        { city: 'Neptune', year: '4,498 million km' }
+        { city: 'The Adam Project', year: '2022' },
+        { city: 'Free Guy', year: '2021' },
+        { city: 'Deadpool 2', year: '2018' },
+        { city: 'The Hitmans Bodyguard', year: '2017' },
+        { city: 'Ted', year: '2012' },
+        { city: 'Buried', year: '2010' },
+        { city: 'Harold & Kuma Go to the White Castle', year: '2004' },
+        { city: 'National Lampoons Van Wilder', year: '2002' }
     ];
 
     let gamesPlayed = 0;
