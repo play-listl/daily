@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'The Hitmans Bodyguard': [10, 10, 11, 12, 8, 6, 4, 4],
         'Ted': [8, 8, 8, 9, 11, 8, 5, 5],
         'Buried': [6, 6, 7, 7, 8, 10, 7, 5],
-        'Harold & Kuma Go to the White Castle': [5, 5, 5, 6, 7, 9, 9, 7],
+        'Harold & Kumar Go to the White Castle': [5, 5, 5, 6, 7, 9, 9, 7],
         'National Lampoons Van Wilder': [4, 4, 4, 4, 5, 6, 7, 8]
     };
 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { city: 'The Hitmans Bodyguard', year: '2017' },
         { city: 'Ted', year: '2012' },
         { city: 'Buried', year: '2010' },
-        { city: 'Harold & Kuma Go to the White Castle', year: '2004' },
+        { city: 'Harold & Kumar Go to the White Castle', year: '2004' },
         { city: 'National Lampoons Van Wilder', year: '2002' }
     ];
 
